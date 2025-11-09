@@ -1,0 +1,205 @@
+:root {
+  color-scheme: dark;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #090909 0%, #020202 55%, #000000 100%);
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 50% 20%, #0a0a0f 0%, #030308 45%, #010104 100%);
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.scene {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: min(35vw, 22rem);
+  aspect-ratio: 9 / 16;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(6, 6, 10, 0.95) 0%, rgba(4, 4, 6, 1) 100%);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.65),
+    0 0 50px rgba(40, 70, 110, 0.25);
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% -10%, rgba(25, 30, 45, 0.65), transparent 55%),
+    radial-gradient(circle at 20% 85%, rgba(10, 18, 28, 0.75), transparent 60%),
+    linear-gradient(180deg, rgba(10, 12, 18, 0.9) 0%, rgba(4, 4, 10, 1) 100%);
+}
+
+.mist {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 80%, rgba(50, 60, 80, 0.2) 0%, transparent 60%),
+    radial-gradient(circle at 30% 40%, rgba(90, 120, 150, 0.12) 0%, transparent 65%),
+    radial-gradient(circle at 70% 35%, rgba(70, 90, 120, 0.13) 0%, transparent 60%);
+  filter: blur(18px);
+  opacity: 0.6;
+}
+
+.rain {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+      100deg,
+      rgba(150, 180, 220, 0.12) 0px,
+      rgba(150, 180, 220, 0.12) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      105deg,
+      rgba(120, 150, 200, 0.08) 0px,
+      rgba(120, 150, 200, 0.08) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+  animation: rainfall 0.9s linear infinite;
+  opacity: 0.65;
+  mix-blend-mode: screen;
+}
+
+@keyframes rainfall {
+  to {
+    transform: translate3d(-3px, 12px, 0);
+  }
+}
+
+.streetlamp {
+  position: absolute;
+  bottom: 20%;
+  right: 18%;
+  width: 15%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  mix-blend-mode: screen;
+}
+
+.lamp-pole {
+  width: 8px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(210, 220, 235, 0.4) 0%, rgba(50, 60, 80, 0.25) 60%, rgba(20, 25, 40, 0.3) 100%);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(120, 140, 200, 0.2);
+}
+
+.lamp-glow {
+  position: absolute;
+  top: 10%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(210, 220, 255, 0.35) 0%, rgba(120, 140, 200, 0.08) 45%, transparent 70%);
+  filter: blur(6px);
+  animation: flicker 2.4s infinite;
+}
+
+@keyframes flicker {
+  0%,
+  19%,
+  22%,
+  63%,
+  64%,
+  100% {
+    opacity: 0.38;
+  }
+  20%,
+  62%,
+  65% {
+    opacity: 0.12;
+  }
+  21%,
+  66% {
+    opacity: 0.45;
+  }
+}
+
+.listener {
+  position: absolute;
+  bottom: 18%;
+  left: 35%;
+  width: 18%;
+  height: 62%;
+  display: flex;
+  justify-content: center;
+}
+
+.listener-core {
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(240, 240, 245, 0.95) 0%, rgba(190, 195, 210, 0.92) 50%, rgba(150, 155, 170, 0.85) 100%);
+  border-radius: 45% 45% 30% 30% / 25% 25% 75% 75%;
+  box-shadow:
+    0 0 55px rgba(240, 240, 255, 0.14),
+    inset 0 0 25px rgba(255, 255, 255, 0.12);
+}
+
+.listener-highlight {
+  position: absolute;
+  top: 14%;
+  left: 10%;
+  width: 38%;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 65%);
+  border-radius: 50% 45% 40% 40% / 45% 40% 60% 55%;
+  filter: blur(2px);
+  opacity: 0.9;
+}
+
+.ground {
+  position: absolute;
+  bottom: 15%;
+  width: 140%;
+  height: 30%;
+  background: radial-gradient(ellipse at center, rgba(30, 40, 55, 0.65) 0%, transparent 70%);
+  filter: blur(8px);
+  opacity: 0.45;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .scene {
+    width: min(60vw, 24rem);
+  }
+}
